@@ -9,7 +9,7 @@ console.log("db config:", db_config);
 
 const sequelize = new Sequelize(db_config.database.database, db_config.database.username , db_config.database.password, {
     host: db_config.database.host,
-    dialect: 'mysql'
+    dialect: 'postgres'
   });
 
    sequelize.authenticate().then( ()=> console.log('Connection has been established successfully.'))
