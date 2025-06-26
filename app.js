@@ -16,7 +16,7 @@ createTaskTable();
 
 // task routes
 const TaskRoutes = require('./src/tasks/router');
-app.use('api/task', TaskRoutes);
+app.use('/api/task', TaskRoutes);
 
 
 //model imports
