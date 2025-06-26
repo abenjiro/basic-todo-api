@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+app.use(cors());
 app.use(express.json());
 
 // Import DB table creator
