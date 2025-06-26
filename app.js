@@ -6,9 +6,19 @@ dotenv.config();
 
 app.use(express.json());
 
-// task route import
-const TaskRoutes = require('./src/tasks/router');
+// Import DB table creator
+const createTaskTable = require('./src/utils/db_init');
 
+// Initialize DB table on app start
+createTaskTable();
+
+// task routes
+const TaskRoutes = require('./src/tasks/router');
+app.use('/task', TaskRoutes);
+
+
+//model imports
+const TaskModel = require('./src/models/Task');
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,12 +28,8 @@ app.get('/', (req, res) => {
     res.send("hello world");
 });
 
-app.use('/task', TaskRoutes );
-
-//model imports
-const TaskModel = require('./src/models/Task');
 
 app.listen((PORT), () => {
-    console.log("Server listening on 3000");
+    console.log("Server listening on ${PORT}");
 })
 
