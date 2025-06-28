@@ -41,8 +41,8 @@ Task.init(
     created_at: {
       type: DataTypes.DATE,
     },
-    status: {
-      type: DataTypes.STRING,
+    completed: {
+      type: DataTypes.BOOLEAN,
     },
   },
   {
