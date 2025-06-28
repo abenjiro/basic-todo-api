@@ -41,6 +41,9 @@ Task.init(
     created_at: {
       type: DataTypes.DATE,
     },
+    status: {
+      type: DataTypes.STRING,
+    },
   },
   {
     sequelize,

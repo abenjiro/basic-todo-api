@@ -17,6 +17,7 @@ const createTaskTable = async () => {
       id SERIAL PRIMARY KEY,
       description VARCHAR(255),
       priority VARCHAR(10),
+      status VARCHAR(10) NOT NULL DEFAULT 'pending',
       created_at DATE,
       updated_at DATE
     );
