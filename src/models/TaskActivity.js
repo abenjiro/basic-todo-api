@@ -22,10 +22,6 @@ TaskActivity.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    task_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     ip_address: {
       type: DataTypes.STRING,
       allowNull: true,
