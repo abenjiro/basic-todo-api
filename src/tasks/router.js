@@ -12,7 +12,10 @@ router.post('/', TaskController.createTask);
 router.patch('/:id', TaskController.updateTask);
 
 //delete tasks
-router.delete('/:id', TaskController.deleteTask)
+router.delete('/:id', TaskController.deleteTask);
+
+//task activites
+router.get('/logs', TaskController.getTaskActivities);
 
 module.exports = router;
 

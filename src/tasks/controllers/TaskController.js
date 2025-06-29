@@ -1,4 +1,5 @@
-const Task = require("../../models/Task")
+const Task = require("../../models/Task");
+const TaskActivity = require("../../models/TaskActivity");
 
 module.exports = {
     getTask: (req, res) => {
@@ -66,5 +67,22 @@ module.exports = {
                 error: err,
             });
         });
-    }
+    },
+
+    // task activities
+    getTaskActivities: (req, res) => {
+        TaskActivity.fetchAllTaskActivities()
+        .then((activities) => {
+            return res.status(200).json({
+                status: true,
+                data: activities,
+            })
+        }).catch((err) => {
+            return res.status(500).json({
+                status: false,
+                error: err,
+            });
+        });
+    },
+
 }
