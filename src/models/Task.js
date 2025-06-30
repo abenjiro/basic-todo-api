@@ -2,26 +2,37 @@ const { DataTypes, Model } = require("sequelize");
 const sequelize = require("../utils/db.js");
 
 class Task extends Model {
-    static fetchAllTask() {
-        return Task.findAll();
-    }
+  static fetchAllTask() {
+    return Task.findAll();
+  }
 
-    static fetchOneTask(task_id) {
-        return Task.findOne({where:{ id: task_id}});
-    }
+  static fetchOneTask(task_id) {
+    return Task.findOne({ where: { id: task_id } });
+  }
 
-    static createTask(params) {
-        return Task.create(params);
-    }
+  static createTask(params) {
+    return Task.create(params);
+  }
 
-    static updateTask(task_id, params) {
-        return Task.update(params,{where:{id: task_id}});
-    }
+  static updateTask(task_id, params) {
+    return Task.update(params, { where: { id: task_id } });
+  }
 
-    static deleteTask(task_id) {
-        return Task.destroy({where:{id: task_id}});
-    }
-} 
+  static deleteTask(task_id) {
+    return Task.destroy({ where: { id: task_id } });
+  }
+
+  static taskAnalysis() {
+    return sequelize.query(`
+    SELECT
+      COUNT(*) FILTER (WHERE completed = true)   AS total_completed,
+      COUNT(*) FILTER (WHERE completed = false)  AS total_pending,
+      COUNT(*) AS total_tasks
+    FROM task
+  `, { type: sequelize.QueryTypes.SELECT });
+  }
+
+}
 
 Task.init(
   {
@@ -49,10 +60,10 @@ Task.init(
     sequelize,
     modelName: "Task",
     tableName: "task",
-    timestamps: true, 
+    timestamps: true,
     updatedAt: "updated_at",
     createdAt: "created_at",
   }
 );
 
-module.exports = Task ;
+module.exports = Task;

@@ -17,5 +17,8 @@ router.delete('/:id', TaskController.deleteTask);
 //task activites
 router.get('/logs', TaskController.getTaskActivities);
 
+//task analysis
+router.get('/analytics',TaskController.getTaskAnalysis)
+
 module.exports = router;
 
